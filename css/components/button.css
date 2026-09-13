@@ -1,0 +1,63 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  min-height: 40px;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border: 0;
+  border-radius: var(--radius-xs);
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-body);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.button:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+.button:active {
+  background-color: var(--color-primary-active);
+}
+
+.button:disabled {
+  background-color: var(--color-border);
+  color: var(--color-surface);
+  cursor: not-allowed;
+}
+
+.button_secondary {
+  box-shadow: inset 0 0 0 1px var(--color-primary);
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+}
+
+.button_secondary:hover:not(:disabled) {
+  background-color: rgb(59 130 246 / 10%);
+  opacity: 1;
+}
+
+.button_secondary:active {
+  background-color: var(--color-primary-surface);
+  box-shadow: inset 0 0 0 1px var(--color-primary-active);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+}
+
+/* На мобильных кнопки в макете растянуты во всю ширину */
+@media (width < 768px) {
+  .button_wide-on-mobile {
+    width: 100%;
+  }
+}

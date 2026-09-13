@@ -1,18 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Генератор квизов</title>
-    <link
-      rel="stylesheet"
-      href="./css/pages/index.css" />
+    <link rel="stylesheet" href="./css/pages/index.css" />
   </head>
   <body>
-    <script
-      type="module"
-      src="./js/pages/main.js"></script>
+    <header id="header"></header>
+
+    <main class="page page_centered page_generator">
+      <div class="container container_narrow">
+        <section class="generator">
+          <form class="generator__form" id="generator-form" novalidate>
+            <div class="generator__content">
+              <div class="generator__intro">
+                <h1 class="generator__title">Генератор квизов</h1>
+                <p class="generator__subtitle">Вставьте JSON…</p>
+              </div>
+              <div class="field">
+                <label class="field__label" for="quiz-json">Ваш JSON</label>
+                <textarea
+                  class="field__control field__control_code"
+                  id="quiz-json"
+                  name="quizJson"
+                  spellcheck="false"
+                  aria-describedby="json-error"
+                  placeholder='{&#10;  "title": "Название теста",&#10;  "questions": []&#10;}'
+                ></textarea>
+              </div>
+
+              <div class="banner" id="json-error" role="alert" hidden>
+                <div class="banner__content">
+                  <span aria-hidden="true">❌</span>
+                  <p class="banner__title">Ошибка: не удалось обработать JSON</p>
+                  <p class="banner__text" id="json-error-text"></p>
+                </div>
+                <button class="button button_secondary" id="json-error-retry" type="button">
+                  Попробовать снова
+                </button>
+              </div>
+            </div>
+
+            <button class="button button_wide-on-mobile" type="submit">Сгенерировать</button>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <dialog
+      class="modal"
+      id="error-modal"
+      aria-labelledby="error-title"
+      aria-describedby="error-message"
+    >
+      <div class="modal__inner">
+        <h2 class="modal__title" id="error-title">Не удалось создать квиз</h2>
+        <p class="banner__text" id="error-message"></p>
+        <form method="dialog">
+          <button class="button" autofocus>Вернуться к JSON</button>
+        </form>
+      </div>
+    </dialog>
+
+    <script type="module" src="./js/pages/main.js"></script>
   </body>
 </html>

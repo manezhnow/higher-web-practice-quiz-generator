@@ -1,0 +1,148 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  margin: 0;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  overflow-wrap: anywhere;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-h3);
+}
+
+/* Любой display у класса перебивает [hidden] из стилей браузера — возвращаем приоритет атрибуту */
+[hidden] {
+  display: none !important;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: var(--color-primary);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Контейнер страницы: ширина и поля берутся из токенов брейкпоинта */
+.container {
+  width: 100%;
+  max-width: calc(var(--layout-max-width) + var(--layout-margin) * 2);
+  margin-inline: auto;
+  padding-inline: var(--layout-margin);
+}
+
+/* Узкая колонка для форм и вопросов теста */
+.container_narrow {
+  max-width: calc(var(--layout-column-width) + var(--layout-margin) * 2);
+}
+
+.page {
+  flex: 1 0 auto;
+  padding-block: var(--spacing-3xl);
+}
+
+.page__footer {
+  padding-bottom: var(--spacing-3xl);
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+@media (width < 1280px) {
+  .page {
+    padding-block: var(--spacing-2xl);
+  }
+
+  .page__footer {
+    display: none;
+  }
+}
+
+@media (width < 768px) {
+  h1 {
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .page {
+    padding-block: var(--spacing-lg);
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Главная центрирует свой блок по вертикали — так задано в макете */
+.page_centered {
+  display: flex;
+  align-items: center;
+}
+
+.page_centered > .container {
+  width: 100%;
+}

@@ -1,18 +1,114 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Прохождение теста</title>
-    <link
-      rel="stylesheet"
-      href="./css/pages/quiz.css" />
+    <link rel="stylesheet" href="./css/pages/quiz.css" />
   </head>
   <body>
-    <script
-      type="module"
-      src="./js/pages/quiz.js"></script>
+    <header id="header"></header>
+
+    <main class="page" id="page">
+      <div class="container container_narrow">
+        <section class="quiz" id="quiz" hidden>
+          <div class="quiz__intro">
+            <h1 class="quiz__title" id="quiz-title"></h1>
+            <p class="quiz__description" id="quiz-description"></p>
+          </div>
+
+          <div class="progress">
+            <p class="progress__label" id="progress-label"></p>
+            <div
+              class="progress__track"
+              id="progress-track"
+              role="progressbar"
+              aria-labelledby="progress-label"
+              aria-valuemin="1"
+            >
+              <div class="progress__bar" id="progress-bar"></div>
+            </div>
+          </div>
+
+          <form class="quiz__form" id="quiz-form">
+            <div id="question-slot"></div>
+            <p class="quiz__summary" id="quiz-summary" role="status" hidden></p>
+            <button class="button button_wide-on-mobile" id="quiz-submit" type="submit">
+              Ответить
+            </button>
+          </form>
+        </section>
+
+        <section class="empty-state" id="quiz-missing" hidden>
+          <div class="empty-state__text">
+            <h1 class="empty-state__title">Квиз не найден(</h1>
+            <p class="empty-state__subtitle">Возможно, его удалили или ссылка неверная.</p>
+          </div>
+          <a class="button button_wide-on-mobile" href="./quizzes.html"> К списку квизов </a>
+        </section>
+      </div>
+    </main>
+
+    <footer class="page__footer">Учебный проект 2026</footer>
+
+    <dialog class="modal modal_result" id="result-modal" aria-labelledby="result-title">
+      <div class="modal__inner">
+        <div class="modal__text">
+          <h2 class="modal__title" id="result-title"></h2>
+          <p id="result-score"></p>
+          <p class="modal__note" id="result-note"></p>
+        </div>
+        <div class="modal__actions">
+          <a class="button" href="./quizzes.html"> К списку квизов </a>
+          <button class="button button_secondary" id="result-restart" type="button">
+            Пройти снова
+          </button>
+        </div>
+      </div>
+    </dialog>
+
+    <template id="single-question-template">
+      <div class="question" data-type="single">
+        <div class="question__heading">
+          <h2 class="question__text"></h2>
+          <p class="question__hint"></p>
+        </div>
+        <ul class="question__options"></ul>
+      </div>
+    </template>
+
+    <template id="multiple-question-template">
+      <div class="question" data-type="multiple">
+        <div class="question__heading">
+          <h2 class="question__text"></h2>
+          <p class="question__hint"></p>
+        </div>
+        <ul class="question__options"></ul>
+      </div>
+    </template>
+
+    <template id="option-template">
+      <li class="question__item">
+        <label class="option">
+          <input class="option__input" type="radio" name="question" value="" />
+          <span class="option__control" aria-hidden="true"></span>
+          <span class="option__text"></span>
+        </label>
+        <p class="question__message" hidden></p>
+      </li>
+    </template>
+
+    <template id="checkbox-option-template">
+      <li class="question__item">
+        <label class="option">
+          <input class="option__input" type="checkbox" name="question" value="" />
+          <span class="option__control" aria-hidden="true"></span>
+          <span class="option__text"></span>
+        </label>
+        <p class="question__message" hidden></p>
+      </li>
+    </template>
+
+    <script type="module" src="./js/pages/quiz.js"></script>
   </body>
 </html>

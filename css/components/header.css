@@ -1,0 +1,104 @@
+.header {
+  z-index: 1;
+  width: min(var(--layout-max-width), calc(100% - var(--layout-margin) * 2));
+  margin-inline: auto;
+  background-color: var(--color-surface);
+  box-shadow: inset 0 -1px var(--color-border);
+}
+
+.header__inner {
+  padding-inline: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-xs);
+  min-height: var(--header-height);
+}
+
+.header__logo {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.header__logo-image {
+  width: 25px;
+  height: 40px;
+}
+
+.header__burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+.header__burger-image {
+  width: 44px;
+  height: 44px;
+}
+
+.header__mobile-links {
+  display: none;
+}
+
+@media (width < 768px) {
+  .header__inner {
+    padding-inline: var(--spacing-xs);
+  }
+
+  .header {
+    position: relative;
+  }
+
+  .header__burger {
+    display: inline-flex;
+  }
+
+  .header__nav {
+    display: flex;
+    position: absolute;
+    inset-inline: 0;
+    top: 100%;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: calc(100dvh - var(--header-height));
+    padding: var(--spacing-lg) var(--spacing-xs);
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .header__nav .header__action {
+    display: none;
+  }
+
+  body:has(.header__burger[aria-expanded='true']) .page {
+    visibility: hidden;
+  }
+
+  html:has(.header__burger[aria-expanded='true']) {
+    overflow: hidden;
+  }
+
+  .header__mobile-links {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header__mobile-link {
+    padding-block: var(--spacing-md);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .header__mobile-link:last-child {
+    border-bottom: 1px solid var(--color-border);
+  }
+}

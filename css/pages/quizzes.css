@@ -1,0 +1,81 @@
+@import '../base/fonts.css';
+@import '../base/variables.css';
+@import '../base/base.css';
+@import '../components/header.css';
+@import '../components/button.css';
+@import '../components/card.css';
+@import '../components/toast.css';
+
+.quizzes {
+  display: flex;
+  flex-direction: column;
+  /* 20px нет в шкале отступов, но именно такой зазор в макете */
+  gap: 20px;
+}
+
+.quizzes__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.quizzes__item {
+  min-height: 200px;
+}
+
+.empty-state {
+  width: 100%;
+  max-width: 750px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* 20px нет в шкале отступов, но именно такой зазор в макете */
+  gap: 20px;
+}
+
+.empty-state__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.empty-state__subtitle {
+  color: var(--color-text-secondary);
+}
+
+@media (width < 1280px) {
+  .quizzes__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (width < 768px) {
+  .quizzes {
+    gap: var(--spacing-md);
+  }
+
+  .quizzes__list {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xs);
+  }
+
+  .quizzes__item {
+    min-height: 0;
+  }
+
+  .empty-state {
+    min-height: calc(100dvh - var(--header-height) - var(--spacing-2xl));
+    gap: var(--spacing-md);
+  }
+
+  .empty-state__text {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .empty-state > .button {
+    flex-shrink: 0;
+  }
+}

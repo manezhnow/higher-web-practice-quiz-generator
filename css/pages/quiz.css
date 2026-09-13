@@ -1,0 +1,89 @@
+@import '../base/fonts.css';
+@import '../base/variables.css';
+@import '../base/base.css';
+@import '../components/header.css';
+@import '../components/button.css';
+@import '../components/progress.css';
+@import '../components/question.css';
+@import '../components/modal.css';
+@import '../components/toast.css';
+
+.quiz {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+body:has(.modal_result[open]) .quiz {
+  display: none;
+}
+
+.quiz__intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.quiz__description {
+  color: var(--color-text-secondary);
+}
+
+.quiz__form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-lg);
+}
+
+.quiz__form > * {
+  width: 100%;
+}
+
+.quiz__form > .button {
+  width: auto;
+}
+
+.quiz__form > .visually-hidden {
+  width: 1px;
+}
+
+.quiz__summary {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-caption);
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* 20px нет в шкале отступов, но именно такой зазор в макете */
+  gap: 20px;
+}
+
+.empty-state__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.empty-state__subtitle {
+  color: var(--color-text-secondary);
+}
+
+@media (width < 768px) {
+  .quiz,
+  .quiz__form,
+  .question {
+    gap: var(--spacing-md);
+  }
+
+  .question__text {
+    font-size: var(--font-size-h3);
+    line-height: var(--line-height-h3);
+  }
+
+  .quiz__form > .button {
+    width: 100%;
+  }
+}

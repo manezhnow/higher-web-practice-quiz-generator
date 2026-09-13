@@ -1,0 +1,66 @@
+@import '../base/fonts.css';
+@import '@fontsource/jetbrains-mono/cyrillic-400.css';
+@import '@fontsource/jetbrains-mono/latin-400.css';
+@import '../base/variables.css';
+@import '../base/base.css';
+@import '../components/header.css';
+@import '../components/button.css';
+@import '../components/field.css';
+@import '../components/banner.css';
+@import '../components/toast.css';
+@import '../components/modal.css';
+
+.generator__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  width: 100%;
+}
+
+.generator__intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.generator__subtitle {
+  color: var(--color-text-secondary);
+}
+
+.generator__form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* 20px нет в шкале отступов, но именно такой зазор в макете */
+  gap: 20px;
+}
+
+.page_generator {
+  padding-top: 0;
+}
+
+@media (width < 1280px) {
+  .page_generator {
+    padding-top: var(--spacing-2xl);
+  }
+}
+
+@media (width < 768px) {
+  .page_generator {
+    padding-top: var(--spacing-lg);
+  }
+
+  .generator__form {
+    min-height: calc(100dvh - var(--header-height) - var(--spacing-2xl));
+    gap: var(--spacing-md);
+  }
+
+  .generator__content {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .generator__form > .button {
+    flex-shrink: 0;
+  }
+}
