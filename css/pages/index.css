@@ -6,9 +6,7 @@
 @import '../components/header.css';
 @import '../components/button.css';
 @import '../components/field.css';
-@import '../components/banner.css';
 @import '../components/toast.css';
-@import '../components/modal.css';
 
 .generator__content {
   display: flex;

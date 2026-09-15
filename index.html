@@ -25,20 +25,8 @@
                   id="quiz-json"
                   name="quizJson"
                   spellcheck="false"
-                  aria-describedby="json-error"
                   placeholder='{&#10;  "title": "Название теста",&#10;  "questions": []&#10;}'
                 ></textarea>
-              </div>
-
-              <div class="banner" id="json-error" role="alert" hidden>
-                <div class="banner__content">
-                  <span aria-hidden="true">❌</span>
-                  <p class="banner__title">Ошибка: не удалось обработать JSON</p>
-                  <p class="banner__text" id="json-error-text"></p>
-                </div>
-                <button class="button button_secondary" id="json-error-retry" type="button">
-                  Попробовать снова
-                </button>
               </div>
             </div>
 
@@ -47,21 +35,6 @@
         </section>
       </div>
     </main>
-
-    <dialog
-      class="modal"
-      id="error-modal"
-      aria-labelledby="error-title"
-      aria-describedby="error-message"
-    >
-      <div class="modal__inner">
-        <h2 class="modal__title" id="error-title">Не удалось создать квиз</h2>
-        <p class="banner__text" id="error-message"></p>
-        <form method="dialog">
-          <button class="button" autofocus>Вернуться к JSON</button>
-        </form>
-      </div>
-    </dialog>
 
     <script type="module" src="./js/pages/main.js"></script>
   </body>
